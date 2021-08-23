@@ -81,6 +81,6 @@ resource "kubectl_manifest" "install" {
 
 resource "kubectl_manifest" "sync" {
   for_each   = { for v in local.sync : lower(join("/", compact([v.data.apiVersion, v.data.kind, lookup(v.data.metadata, "namespace", ""), v.data.metadata.name]))) => v.content }
-  depends_on = [kubectl_manifest.install, kubernetes_secret.this]
+  depends_on = [kubectl_manifest.install]
   yaml_body = each.value
 }
