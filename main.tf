@@ -35,7 +35,7 @@ data "kubectl_file_documents" "install" {
 }
 
 data "flux_sync" "this" {
-  branch      = "main"
+  branch      = var.github_repository_branch
   target_path = "clusters/${var.kubernetes_cluster_name}"
   url         = "https://github.com/${var.github_owner}/${var.github_repository_name}"
 }

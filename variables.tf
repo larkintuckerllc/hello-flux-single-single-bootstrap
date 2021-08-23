@@ -2,6 +2,10 @@ variable "github_owner" {
   type = string
 }
 
+variable "github_repository_branch" {
+  type = string
+}
+
 variable "github_repository_deploy_key_private" {
   type = string
 }
