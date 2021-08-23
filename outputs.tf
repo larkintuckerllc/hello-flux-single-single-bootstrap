@@ -21,3 +21,11 @@ output "kustomize_path" {
 output "kustomize_content" {
   value = data.flux_sync.this.kustomize_content
 }
+
+output "secret_name" {
+  value = data.flux_sync.this.secret
+}
+
+output "secret_namespace" {
+    value = data.flux_sync.this.namespace
+}

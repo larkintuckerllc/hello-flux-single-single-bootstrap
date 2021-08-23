@@ -79,18 +79,6 @@ resource "kubectl_manifest" "install" {
 
 # FLUX SYNC
 
-resource "kubernetes_secret" "this" {
-  data = {
-    identity       = var.github_repository_deploy_key_private
-    "identity.pub" = var.github_repository_deploy_key_public
-    known_hosts    = local.known_hosts
-  }
-  metadata {
-    name      = data.flux_sync.this.secret
-    namespace = data.flux_sync.this.namespace
-  }
-}
-
 resource "kubectl_manifest" "sync" {
   for_each   = { for v in local.sync : lower(join("/", compact([v.data.apiVersion, v.data.kind, lookup(v.data.metadata, "namespace", ""), v.data.metadata.name]))) => v.content }
   depends_on = [kubectl_manifest.install, kubernetes_secret.this]

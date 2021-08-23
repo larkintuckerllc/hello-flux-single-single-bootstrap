@@ -6,14 +6,6 @@ variable "github_repository_branch" {
   type = string
 }
 
-variable "github_repository_deploy_key_private" {
-  type = string
-}
-
-variable "github_repository_deploy_key_public" {
-  type = string
-}
-
 variable "github_repository_name" {
   type = string
 }
