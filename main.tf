@@ -18,6 +18,11 @@ terraform {
 
 # PROVIDER
 
+provider "kubectl" {
+  config_path    = "~/.kube/config"
+  config_context = var.kubernetes_config_context
+}
+
 provider "kubernetes" {
   config_path    = "~/.kube/config"
   config_context = var.kubernetes_config_context
